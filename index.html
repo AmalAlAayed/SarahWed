@@ -366,7 +366,10 @@
                 <h3>🏨 المكان</h3>
                 <p>قاعة الأفراح الملكية - مدينة الرياض</p>
             </div>
-            
+            <div class="detail-card floating" style="animation-delay: 0.8s;">
+                <h3>🎵 DJ الحفل</h3>
+                <p>تسجيلات النجوم - DJ أحمد</p>
+            </div>
         </div>
     </section>
 
@@ -421,151 +424,99 @@
         const countdownInterval = setInterval(updateCountdown, 1000);
 
         // كود الصوت والموجات
+        // استبدل هذا الجزء من الكود السابق بالكود الجديد:
+
         const audio = document.getElementById('bgMusic');
         const canvas = document.getElementById('waveCanvas');
         const ctx = canvas.getContext('2d');
         const playButton = document.getElementById('playButton');
         const audioVisualizer = document.getElementById('audioVisualizer');
-        let audioCtx, analyser;
 
-        // تهيئة Canvas
+
+        // استبدل initCanvas() بهذا الكود:
         function initCanvas() {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-            console.log("Canvas initialized:", canvas.width, "x", canvas.height);
+            canvas.width = window.innerWidth;
+            canvas.height = 100; // ارتفاع ثابت للموجات
+            console.log("New Canvas dimensions:", canvas.width, "x", canvas.height);
         }
 
-        // تهيئة Analyser
-        function initAudioAnalyser() {
-            if (!audioCtx) {
+        // تهيئة النظام الصوتي
+        let audioCtx, analyser, dataArray;
+
+        async function setupAudio() {
+            try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                await audio.play(); // يجب أن يكون قبل إنشاء Analyser
+
                 analyser = audioCtx.createAnalyser();
                 const source = audioCtx.createMediaElementSource(audio);
                 source.connect(analyser);
                 analyser.connect(audioCtx.destination);
                 analyser.fftSize = 256;
-                console.log("Audio Analyser initialized");
+
+                const bufferLength = analyser.frequencyBinCount;
+                dataArray = new Uint8Array(bufferLength);
+
+                console.log("Audio system ready");
+                return true;
+            } catch (err) {
+                console.error("Audio setup failed:", err);
+                return false;
             }
         }
 
         // رسم الموجات
-        function drawWave() {
+        function draw() {
+            requestAnimationFrame(draw);
+
             if (!analyser) return;
 
-            requestAnimationFrame(drawWave);
-            const bufferLength = analyser.frequencyBinCount;
-            const dataArray = new Uint8Array(bufferLength);
             analyser.getByteFrequencyData(dataArray);
-
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // إنشاء تدرج لوني
-            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            gradient.addColorStop(0, '#D97A90');
-            gradient.addColorStop(0.5, '#F7D6DD');
-            gradient.addColorStop(1, '#BF5C77');
 
             // رسم الموجة الرئيسية
             ctx.beginPath();
-            for (let i = 0; i < bufferLength; i++) {
-                const x = i * (canvas.width / bufferLength);
+            for (let i = 0; i < dataArray.length; i++) {
+                const x = i * (canvas.width / dataArray.length);
                 const y = canvas.height - (dataArray[i] / 255) * canvas.height;
-                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-            }
-            ctx.strokeStyle = gradient;
-            ctx.lineWidth = 2;
-            ctx.stroke();
 
-            // رسم موجة ثانية للعمق
-            ctx.beginPath();
-            for (let i = 0; i < bufferLength; i += 2) {
-                const x = i * (canvas.width / bufferLength);
-                const y = canvas.height - (dataArray[i] / 255) * canvas.height * 0.7;
-                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
             }
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-            ctx.lineWidth = 1;
+
+            ctx.strokeStyle = '#D97A90';
+            ctx.lineWidth = 2;
             ctx.stroke();
         }
 
-        // تفعيل الصوت والموجات
+        // تفعيل النظام بالكامل
         playButton.addEventListener('click', async () => {
             try {
-                // تهيئة العناصر أولاً
                 initCanvas();
 
-                // تشغيل الصوت
-                await audio.play();
-                audio.volume = 0.3;
+                const audioReady = await setupAudio();
+                if (!audioReady) {
+                    playButton.textContent = "يجب السماح بالصوت أولاً";
+                    playButton.style.background = "#f44336";
+                    return;
+                }
 
-                // إظهار الموجات وإخفاء الزر
                 audioVisualizer.style.display = 'block';
                 playButton.style.display = 'none';
+                draw();
 
-                // تهيئة وتحريك الموجات
-                initAudioAnalyser();
-                drawWave();
-
-                console.log("Audio started successfully!");
             } catch (err) {
                 console.error("Error:", err);
-                playButton.textContent = "يجب النقر للسماح بالصوت";
-                playButton.style.backgroundColor = "#f44336";
+                playButton.textContent = "حدث خطأ - حاول مجدداً";
             }
         });
 
-        // التنقل السلس
-        document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute("href")).scrollIntoView({
-                    behavior: "smooth",
-                });
-            });
-        });
-
-        // إبراز قسم التنقل النشط
-        const navLinks = document.querySelectorAll("nav a");
-        window.addEventListener("scroll", () => {
-            let current = "";
-            document.querySelectorAll("section").forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 300) {
-                    current = section.getAttribute("id");
-                }
-            });
-
-            navLinks.forEach((link) => {
-                link.classList.remove("active");
-                if (link.getAttribute("href") === `#${current}`) {
-                    link.classList.add("active");
-                }
-            });
-        });
-
-        // حركة ظهور العناصر
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        document.querySelectorAll("section").forEach((section) => {
-            section.style.opacity = "0";
-            section.style.transform = "translateY(30px)";
-            section.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-            observer.observe(section);
-        });
-
-        // تهيئة أولية للـ Canvas
+        // التهيئة الأولية
         initCanvas();
+
     </script>
 </body>
 
