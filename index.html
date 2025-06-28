@@ -323,10 +323,7 @@
                 <h3>🏨 المكان</h3>
                 <p>قاعة الأفراح الملكية - مدينة الرياض</p>
             </div>
-            <div class="detail-card floating" style="animation-delay: 0.8s;">
-                <h3>🎵 DJ الحفل</h3>
-                <p>تسجيلات النجوم - DJ أحمد</p>
-            </div>
+            
         </div>
     </section>
 
@@ -441,23 +438,20 @@
             }
         });
     </script>
-    <div id="musicIndicator"
-        style="display:none; position:fixed; bottom:20px; right:20px; background:var(--primary); color:white; padding:8px 15px; border-radius:20px; font-size:14px;">
-        ♫ تشغيل الموسيقى التلقائي
-    </div>
+    <audio id="bgMusic" autoplay loop muted>
+        <source src="Soso.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
-        window.addEventListener('scroll', function () {
-            if (!isAudioPlayed) {
-                document.getElementById('musicIndicator').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('musicIndicator').style.display = 'none';
-                }, 3000);
-            }
+        document.addEventListener('click', function () {
+            const music = document.getElementById('bgMusic');
+            music.muted = false; // تفعيل الصوت بعد النقر
+            document.removeEventListener('click', arguments.callee);
         });
+
+        // محاولة تشغيل الصوت تلقائياً إذا سمح المتصفح (نادرة النجاح)
+        document.getElementById('bgMusic').play().catch(e => console.log("التشغيل التلقائي غير مسموح"));
     </script>
 </body>
-
-</html>
 
 </html>
