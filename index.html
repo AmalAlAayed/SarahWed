@@ -323,7 +323,10 @@
                 <h3>🏨 المكان</h3>
                 <p>قاعة الأفراح الملكية - مدينة الرياض</p>
             </div>
-          
+            <div class="detail-card floating" style="animation-delay: 0.8s;">
+                <h3>🎵 DJ الحفل</h3>
+                <p>تسجيلات النجوم - DJ أحمد</p>
+            </div>
         </div>
     </section>
 
@@ -417,20 +420,44 @@
         updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
     </script>
-    <audio autoplay loop id="bgMusic">
+    <audio id="bgMusic" loop>
         <source src="Soso.mp3" type="audio/mpeg">
-        متصفحك لا يدعم تشغيل الصوت.
     </audio>
 
     <script>
-        // هذا الكود لجعل الصوت يبدأ عند تفاعل المستخدم (مطلوب في بعض المتصفحات)
-        document.addEventListener('click', function () {
-            const music = document.getElementById('bgMusic');
-            music.play();
-            // إزالة المستمع بعد النقر الأول
-            document.removeEventListener('click', arguments.callee);
+        let isAudioPlayed = false; // لتجنب تكرار التشغيل
+
+        window.addEventListener('scroll', function () {
+            if (!isAudioPlayed) {
+                const audio = document.getElementById('bgMusic');
+                audio.play()
+                    .then(() => {
+                        isAudioPlayed = true;
+                        window.removeEventListener('scroll', arguments.callee); // إزالة المستمع بعد التشغيل
+                    })
+                    .catch(error => {
+                        console.log("لم يتمكن من تشغيل الصوت:", error);
+                    });
+            }
+        });
+    </script>
+    <div id="musicIndicator"
+        style="display:none; position:fixed; bottom:20px; right:20px; background:var(--primary); color:white; padding:8px 15px; border-radius:20px; font-size:14px;">
+        ♫ تشغيل الموسيقى التلقائي
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            if (!isAudioPlayed) {
+                document.getElementById('musicIndicator').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('musicIndicator').style.display = 'none';
+                }, 3000);
+            }
         });
     </script>
 </body>
+
+</html>
 
 </html>
