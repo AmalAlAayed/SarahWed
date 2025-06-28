@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عروستنا سارة</title>
+    <!-- Google Fonts for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #D97A90;
+            --secondary: #F7D6DD;
+            --accent: #BF5C77;
+            --dark: #80344D;
+            --text: #4A2B31;
+            --light: #FFF6F8;
+        }
+
+        body {
+            font-family: 'El Messiri', sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            line-height: 1.8;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            text-align: center;
+            padding: 50px 0;
+            margin: 40px auto;
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(128, 52, 77, 0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--dark), #A84E67);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(191, 92, 119, 0.3);
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            display: inline-block;
+            font-weight: 600;
+            background: rgba(247, 214, 221, 0.5);
+        }
+
+        nav a:hover,
+        .active {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(191, 92, 119, 0.4);
+            color: var(--dark);
+        }
+
+        section {
+            padding: 40px;
+            margin: 40px auto;
+            width: 90%;
+            max-width: 1000px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(217, 122, 144, 0.3);
+        }
+
+        h2 {
+            color: var(--dark);
+            padding-bottom: 15px;
+            margin-top: 0;
+            font-size: 2.2rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+
+        .design-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .design-gallery img {
+            width: 100%;
+            border-radius: 15px;
+            transition: all 0.5s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100%; overflow: hidden;">
+        <img src="Pink Watercolor Illustration Bridal Shower Invitation.png" alt="Bride to Be"
+            style="width: 100%; max-height: 600px; object-fit: cover; display: block;">
+    </div>
+
+    <header>
+        <h1>عروستنا سارة</h1>
+    </header>
+
+    <nav>
+        <a href="#design" class="active">التصميم</a>
+        <a href="#padlet">لوحة التهنئات</a>
+        <a href="#details">تفاصيل الفرح</a>
+        <a href="#gallery">معرض الصور</a>
+    </nav>
+    <section id="design">
+        <h2>تصميم الفرح</h2>
+        <p>هنا نعرض لكم تصاميم وأفكارنا لفرح عروستنا الغالية سارة. كل التفاصيل تم اختيارها بعناية لتناسب ذوقها الراقي
+            وأناقتها.</p>
+
+        <div class="design-gallery">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="تصميم الدعوات">
+            <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="تصميم الزينة">
+            <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="تصميم الكوشة">
+            <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="تصميم الضيافة">
+        </div>
+    </section>
+
+    <section id="padlet">
+        <h2>لوحة التهنئات</h2>
+        <p>شاركنا تهنئاتكم وأمنياتكم الجميلة لعروستنا سارة على لوحتنا التفاعلية:</p>
+
+        <div class="padlet-container">
+            <div class="padlet-embed"
+                style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4">
+                <p style="padding:0;margin:0">
+                    <iframe src="https://padlet.com/embed/h5zevd8adc46tfz2" frameborder="0"
+                        allow="camera;microphone;geolocation;display-capture;clipboard-write"
+                        style="width:100%;height:608px;display:block;padding:0;margin:0"></iframe>
+                </p>
+                <div style="display:flex;align-items:center;justify-content:end;margin:0;height:28px">
+                    <a href="https://padlet.com?ref=embed"
+                        style="display:block;flex-grow:0;margin:0;border:none;padding:0;text-decoration:none"
+                        target="_blank">
+                        <div style="display:flex;align-items:center;">
+                            <img src="https://padlet.net/embeds/made_with_padlet_2022.png" width="114" height="28"
+                                style="padding:0;margin:0;background:0 0;border:none;box-shadow:none"
+                                alt="قُدم مع Padlet">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="details">
+        <h2>تفاصيل الفرح</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+            <div class="detail-card floating" style="animation-delay: 0.2s;">
+                <h3>📅 التاريخ</h3>
+                <p>يوم الجمعة الموافق 15 ديسمبر 2023</p>
+            </div>
+            <div class="detail-card floating" style="animation-delay: 0.4s;">
+                <h3>⏰ الوقت</h3>
+                <p>تبداء الحفلة الساعة 8:00 مساءً</p>
+            </div>
+            <div class="detail-card floating" style="animation-delay: 0.6s;">
+                <h3>🏨 المكان</h3>
+                <p>قاعة الأفراح الملكية - مدينة الرياض</p>
+            </div>
+            <div class="detail-card floating" style="animation-delay: 0.8s;">
+                <h3>🎵 DJ الحفل</h3>
+                <p>تسجيلات النجوم - DJ أحمد</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>معرض الصور</h2>
+        <p>لحظات جميلة من التحضيرات واللحظات الخاصة مع العروس:</p>
+
+        <div class="design-gallery">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="صورة العروس">
+            <img src="https://images.unsplash.com/photo-1511821732895-f4d3f85ca2c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="لحظة خاصة">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="تجربة الفستان">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="حفل خطوبة">
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.3rem; margin-bottom: 15px; font-weight: 600;">جميع الحقوق محفوظة &copy; 2023 موقع عروستنا
+            سارة</p>
+        <p style="margin: 0; font-size: 1.1rem;">للاستفسارات: 0551234567 | info@sarah-wedding.com</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Active navigation link highlighting
+        const navLinks = document.querySelectorAll('nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === #${ current }) {
+                link.classList.add('active');
+            }
+        });
+        });
+
+        // Initialize animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+    </script>
+    <!-- باقي الأقسام كما هي -->
+</body>
+
+</html>
