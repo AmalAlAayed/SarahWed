@@ -237,7 +237,7 @@
             }
 
             .intro-image {
-                max-height: 1000px;
+                max-height: 100px;
                 border-radius: 0;
             }
 
@@ -419,6 +419,20 @@
 
         updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+    <audio autoplay loop id="bgMusic">
+        <source src="Soso.mp3" type="audio/mpeg">
+        متصفحك لا يدعم تشغيل الصوت.
+    </audio>
+
+    <script>
+        // هذا الكود لجعل الصوت يبدأ عند تفاعل المستخدم (مطلوب في بعض المتصفحات)
+        document.addEventListener('click', function () {
+            const music = document.getElementById('bgMusic');
+            music.play();
+            // إزالة المستمع بعد النقر الأول
+            document.removeEventListener('click', arguments.callee);
+        });
     </script>
 </body>
 
