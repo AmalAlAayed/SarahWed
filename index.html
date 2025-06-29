@@ -356,30 +356,31 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
             <div class="detail-card floating" style="animation-delay: 0.2s;">
                 <h3>📅 التاريخ</h3>
-                <p>يوم الجمعة الموافق 15 ديسمبر 2023</p>
+                <p>يوم الأربعاء الموافق 28 محرم 1447</p>
             </div>
             <div class="detail-card floating" style="animation-delay: 0.4s;">
                 <h3>⏰ الوقت</h3>
-                <p>تبداء الحفلة الساعة 8:00 مساءً</p>
+                <p>تبداء الحفلة الساعة 10:00 مساءً</p>
             </div>
             <div class="detail-card floating" style="animation-delay: 0.6s;">
                 <h3>🏨 المكان</h3>
-                <p>قاعة الأفراح الملكية - مدينة الرياض</p>
+                <p>قاعة الأفراح الملكية - المدينة المنورة</p>
             </div>
-            <div class="detail-card floating" style="animation-delay: 0.8s;">
-                <h3>🎵 DJ الحفل</h3>
-                <p>تسجيلات النجوم - DJ أحمد</p>
-            </div>
+
         </div>
     </section>
 
     <section id="gallery">
         <h2>معرض الصور</h2>
         <p>لحظات جميلة من التحضيرات واللحظات الخاصة مع العروس:</p>
+        <div class="design-gallery">
+            <img src="inv.png" alt="دعوة خاصة" />
+        </div>
+
     </section>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2023 | عروستنا سارة</p>
+
     </footer>
 
     <!-- عنصر الصوت والموجات -->
@@ -412,12 +413,8 @@
             const hours = Math.floor(
                 (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
             );
-            const minutes = Math.floor(
-                (distance % (1000 * 60 * 60)) / (1000 * 60)
-            );
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `العد التنازلي: ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
+            countdownElement.innerHTML = `العد التنازلي: ${days} يوم ${hours} ساعة  `;
         }
 
         updateCountdown();
