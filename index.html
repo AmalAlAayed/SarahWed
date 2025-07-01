@@ -203,11 +203,17 @@
             display: block;
         }
 
-        #playButton {
+        /* أنماط الأزرار الجديدة */
+        .audio-controls {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+
+        .audio-btn {
             background: var(--primary);
             color: white;
             border: none;
@@ -224,7 +230,7 @@
             gap: 8px;
         }
 
-        #playButton:hover {
+        .audio-btn:hover {
             background: var(--accent);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
@@ -232,6 +238,11 @@
 
         #playButton::before {
             content: '♫';
+            font-size: 20px;
+        }
+
+        #stopButton::before {
+            content: '■';
             font-size: 20px;
         }
 
@@ -293,11 +304,14 @@
                 height: 70px;
             }
 
-            #playButton {
-                padding: 10px 18px;
-                font-size: 14px;
+            .audio-controls {
                 bottom: 15px;
                 right: 15px;
+            }
+
+            .audio-btn {
+                padding: 10px 18px;
+                font-size: 14px;
             }
         }
 
@@ -345,60 +359,6 @@
         @media (max-width: 600px) {
             .voice-message {
                 padding: 12px;
-            }
-        }
-
-        .audio-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-            display: flex;
-            gap: 10px;
-        }
-
-        .audio-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-family: 'El Messiri', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .audio-btn:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        #playButton::before {
-            content: '♫';
-            font-size: 20px;
-        }
-
-        #stopButton::before {
-            content: '■';
-            font-size: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .audio-controls {
-                bottom: 15px;
-                right: 15px;
-            }
-
-            .audio-btn {
-                padding: 10px 18px;
-                font-size: 14px;
             }
         }
     </style>
@@ -539,8 +499,6 @@
     </footer>
 
     <!-- عنصر الصوت والموجات -->
-
-
     <audio id="bgMusic" loop preload="auto">
         <source src="Soso.mp3" type="audio/mpeg">
         متصفحك لا يدعم تشغيل الصوت.
@@ -581,15 +539,12 @@
         const countdownInterval = setInterval(updateCountdown, 1000);
 
         // كود الصوت والموجات
-
-
         const audio = document.getElementById('bgMusic');
         const canvas = document.getElementById('waveCanvas');
         const ctx = canvas.getContext('2d');
         const playButton = document.getElementById('playButton');
+        const stopButton = document.getElementById('stopButton');
         const audioVisualizer = document.getElementById('audioVisualizer');
-
-
 
         function initCanvas() {
             canvas.width = window.innerWidth;
@@ -663,31 +618,6 @@
 
                 audioVisualizer.style.display = 'block';
                 playButton.style.display = 'none';
-                draw();
-
-            } catch (err) {
-                console.error("Error:", err);
-                playButton.textContent = "حدث خطأ - حاول مجدداً";
-            }
-        });
-        // الحصول على عناصر الزر الجديدة
-        const stopButton = document.getElementById('stopButton');
-        const audioControls = document.querySelector('.audio-controls');
-
-        // تفعيل النظام بالكامل
-        playButton.addEventListener('click', async () => {
-            try {
-                initCanvas();
-
-                const audioReady = await setupAudio();
-                if (!audioReady) {
-                    playButton.textContent = "يجب السماح بالصوت أولاً";
-                    playButton.style.background = "#f44336";
-                    return;
-                }
-
-                audioVisualizer.style.display = 'block';
-                playButton.style.display = 'none';
                 stopButton.style.display = 'block';
                 draw();
 
@@ -720,7 +650,6 @@
 
         // التهيئة الأولية
         initCanvas();
-
     </script>
 </body>
 
