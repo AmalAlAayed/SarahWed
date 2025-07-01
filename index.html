@@ -184,7 +184,6 @@
             border-radius: 0;
         }
 
-        /* موجات الصوت */
         #audioVisualizer {
             position: fixed;
             bottom: 0;
@@ -203,7 +202,6 @@
             display: block;
         }
 
-        /* أنماط الأزرار الجديدة */
         .audio-controls {
             position: fixed;
             bottom: 20px;
@@ -244,6 +242,31 @@
         #stopButton::before {
             content: '■';
             font-size: 20px;
+        }
+
+        .audio-permission-alert {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 300px;
+            z-index: 1000;
+            display: none;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .audio-permission-alert button {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-family: 'El Messiri', sans-serif;
         }
 
         @media (max-width: 600px) {
@@ -312,6 +335,12 @@
             .audio-btn {
                 padding: 10px 18px;
                 font-size: 14px;
+            }
+
+            .audio-permission-alert {
+                bottom: 80px;
+                right: 15px;
+                max-width: 250px;
             }
         }
 
@@ -391,48 +420,41 @@
             وأناقتها.
         </p>
     </section>
-    </section>
 
-    <!-- قسم الرسائل الصوتية الجديد -->
     <section id="voice-messages">
         <h2>الرسائل الصوتية</h2>
         <p>استمع إلى رسائل التهنئة الصوتية من الأهل والأصدقاء:</p>
 
         <div class="voice-messages-container">
-            <!-- رسالة صوتية 1 -->
             <div class="voice-message">
                 <h3>رسالة من خال محمد</h3>
                 <audio controls style="width: 100%;">
                     <source src="mo.ogg" type="audio/mpeg">
                     المتصفح لا يدعم تشغيل الصوت.
                 </audio>
-                <p class="message-date">28 يونيو 2025</p>
+
             </div>
 
-            <!-- رسالة صوتية 2 -->
             <div class="voice-message">
                 <h3>رسالة من خالة منى</h3>
                 <audio controls style="width: 100%;">
                     <source src="muna.ogg" type="audio/mpeg">
                     المتصفح لا يدعم تشغيل الصوت.
                 </audio>
-                <p class="message-date">30 يونيو 2025</p>
+
             </div>
 
-            <!-- رسالة صوتية 3 -->
             <div class="voice-message">
                 <h3>رسالة من خالة بدرية</h3>
                 <audio controls style="width: 100%;">
                     <source src="bedr.ogg" type="audio/mpeg">
                     المتصفح لا يدعم تشغيل الصوت.
                 </audio>
-                <p class="message-date">1 يوليو 2025</p>
+
             </div>
         </div>
 
-        <p style="margin-top: 20px; font-style: italic;">
-            يمكنك إرسال رسالتك الصوتية عبر الواتساب على الرقم: 0551234567
-        </p>
+
     </section>
 
     <section id="padlet">
@@ -475,9 +497,8 @@
             </div>
             <div class="detail-card floating" style="animation-delay: 0.6s;">
                 <h3>🏨 المكان</h3>
-                <p>قاعة الأفراح الملكية - المدينة المنورة</p>
+                <p>قاعة العروب - المدينة المنورة</p>
             </div>
-
         </div>
     </section>
 
@@ -492,11 +513,10 @@
             <img src="cel.jpg" alt="دعوة خاصة" />
             <img src="cele.jpg" alt="دعوة خاصة" />
         </div>
-
     </section>
 
     <footer>
-
+        <!-- يمكن إضافة محتوى للفوتر هنا -->
     </footer>
 
     <!-- عنصر الصوت والموجات -->
@@ -512,6 +532,11 @@
     <div class="audio-controls">
         <button id="playButton" class="audio-btn">تشغيل الأنشودة</button>
         <button id="stopButton" class="audio-btn">إيقاف الأنشودة</button>
+    </div>
+
+    <div class="audio-permission-alert" id="permissionAlert">
+        <p>لسماع الأنشودة، يرجى السماح بتشغيل الصوت في المتصفح</p>
+        <button id="allowAudioButton">السماح بالصوت</button>
     </div>
 
     <script>
@@ -533,44 +558,41 @@
                 (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
             );
 
-            countdownElement.innerHTML = `العد التنازلي: ${days} يوم ${hours} ساعة  `;
+            countdownElement.innerHTML = `العد التنازلي: ${days} يوم ${hours} ساعة`;
         }
 
         updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
 
-        // كود الصوت والموجات
+        // نظام التحكم بالصوت المحسن
         const audio = document.getElementById('bgMusic');
         const canvas = document.getElementById('waveCanvas');
         const ctx = canvas.getContext('2d');
         const playButton = document.getElementById('playButton');
         const stopButton = document.getElementById('stopButton');
         const audioVisualizer = document.getElementById('audioVisualizer');
+        const permissionAlert = document.getElementById('permissionAlert');
+        const allowAudioButton = document.getElementById('allowAudioButton');
+
+        // تهيئة أولية
+        let audioCtx, analyser, dataArray;
+        let audioAllowed = false;
 
         function initCanvas() {
             canvas.width = window.innerWidth;
-            canvas.height = 100; // ارتفاع ثابت للموجات
-            console.log("New Canvas dimensions:", canvas.width, "x", canvas.height);
+            canvas.height = 100;
         }
-
-        // تهيئة النظام الصوتي
-        let audioCtx, analyser, dataArray;
 
         async function setupAudio() {
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                await audio.play(); // يجب أن يكون قبل إنشاء Analyser
-
                 analyser = audioCtx.createAnalyser();
                 const source = audioCtx.createMediaElementSource(audio);
                 source.connect(analyser);
                 analyser.connect(audioCtx.destination);
                 analyser.fftSize = 256;
 
-                const bufferLength = analyser.frequencyBinCount;
-                dataArray = new Uint8Array(bufferLength);
-
-                console.log("Audio system ready");
+                dataArray = new Uint8Array(analyser.frequencyBinCount);
                 return true;
             } catch (err) {
                 console.error("Audio setup failed:", err);
@@ -578,16 +600,15 @@
             }
         }
 
-        // رسم الموجات
-        function draw() {
-            requestAnimationFrame(draw);
+        function drawVisualizer() {
+            requestAnimationFrame(drawVisualizer);
 
             if (!analyser) return;
 
             analyser.getByteFrequencyData(dataArray);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // رسم الموجة الرئيسية
+            // رسم الموجات
             ctx.beginPath();
             for (let i = 0; i < dataArray.length; i++) {
                 const x = i * (canvas.width / dataArray.length);
@@ -605,38 +626,38 @@
             ctx.stroke();
         }
 
-        // تفعيل النظام بالكامل
-        playButton.addEventListener('click', async () => {
+        // طلب إذن التشغيل
+        function requestAudioPermission() {
+            permissionAlert.style.display = 'block';
+        }
+
+        // تشغيل الصوت بعد الحصول على الإذن
+        async function startAudioPlayback() {
             try {
+                await audio.play();
+                audioAllowed = true;
+                permissionAlert.style.display = 'none';
+
                 initCanvas();
-
-                const audioReady = await setupAudio();
-                if (!audioReady) {
-                    playButton.textContent = "يجب السماح بالصوت أولاً";
-                    playButton.style.background = "#f44336";
-                    return;
-                }
-
+                await setupAudio();
                 audioVisualizer.style.display = 'block';
                 playButton.style.display = 'none';
                 stopButton.style.display = 'block';
-                draw();
-
+                drawVisualizer();
             } catch (err) {
-                console.error("Error:", err);
-                playButton.textContent = "حدث خطأ - حاول مجدداً";
+                console.error("Playback failed:", err);
+                requestAudioPermission();
             }
-        });
+        }
 
-        // إضافة وظيفة إيقاف الصوت
-        stopButton.addEventListener('click', () => {
+        // إيقاف الصوت
+        function stopAudioPlayback() {
             audio.pause();
             audio.currentTime = 0;
             audioVisualizer.style.display = 'none';
             playButton.style.display = 'block';
             stopButton.style.display = 'none';
 
-            // إيقاف نظام الصوت إذا كان يعمل
             if (audioCtx) {
                 audioCtx.close().then(() => {
                     audioCtx = null;
@@ -644,13 +665,38 @@
                     dataArray = null;
                 });
             }
+        }
+
+        // أحداث الأزرار
+        playButton.addEventListener('click', async () => {
+            if (!audioAllowed) {
+                await startAudioPlayback();
+            } else {
+                audio.play();
+                audioVisualizer.style.display = 'block';
+                playButton.style.display = 'none';
+                stopButton.style.display = 'block';
+            }
         });
+
+        allowAudioButton.addEventListener('click', startAudioPlayback);
+
+        stopButton.addEventListener('click', stopAudioPlayback);
 
         // إخفاء زر الإيقاف في البداية
         stopButton.style.display = 'none';
 
         // التهيئة الأولية
         initCanvas();
+
+        // عند تحميل الصفحة، نعرض رسالة ترحيب توضح كيفية التشغيل
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (!audioAllowed) {
+                    requestAudioPermission();
+                }
+            }, 3000);
+        });
     </script>
 </body>
 
