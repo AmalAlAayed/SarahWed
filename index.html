@@ -300,6 +300,53 @@
                 right: 15px;
             }
         }
+
+        #voice-messages {
+            background: linear-gradient(135deg, rgba(255, 246, 248, 0.9), rgba(247, 214, 221, 0.8));
+        }
+
+        .voice-messages-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .voice-message {
+            background-color: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-right: 4px solid var(--primary);
+        }
+
+        .voice-message h3 {
+            color: var(--dark);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .message-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-top: 8px;
+            text-align: left;
+        }
+
+        audio {
+            border-radius: 10px;
+            background-color: var(--light);
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: var(--secondary);
+        }
+
+        @media (max-width: 600px) {
+            .voice-message {
+                padding: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -328,6 +375,49 @@
         <p>
             هنا نعرض لكم تصاميم وأفكارنا لفرح عروستنا الغالية سارة. كل التفاصيل تم اختيارها بعناية لتناسب ذوقها الراقي
             وأناقتها.
+        </p>
+    </section>
+    </section>
+
+    <!-- قسم الرسائل الصوتية الجديد -->
+    <section id="voice-messages">
+        <h2>الرسائل الصوتية</h2>
+        <p>استمع إلى رسائل التهنئة الصوتية من الأهل والأصدقاء:</p>
+
+        <div class="voice-messages-container">
+            <!-- رسالة صوتية 1 -->
+            <div class="voice-message">
+                <h3>رسالة من خال محمد</h3>
+                <audio controls style="width: 100%;">
+                    <source src="mo.ogg" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+                <p class="message-date">28 يونيو 2025</p>
+            </div>
+
+            <!-- رسالة صوتية 2 -->
+            <div class="voice-message">
+                <h3>رسالة من خالة منى</h3>
+                <audio controls style="width: 100%;">
+                    <source src="muna.ogg" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+                <p class="message-date">30 يونيو 2025</p>
+            </div>
+
+            <!-- رسالة صوتية 3 -->
+            <div class="voice-message">
+                <h3>رسالة من خالة بدرية</h3>
+                <audio controls style="width: 100%;">
+                    <source src="bedr.ogg" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+                <p class="message-date">1 يوليو 2025</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 20px; font-style: italic;">
+            يمكنك إرسال رسالتك الصوتية عبر الواتساب على الرقم: 0551234567
         </p>
     </section>
 
