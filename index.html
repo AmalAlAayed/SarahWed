@@ -361,22 +361,51 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border-right: 4px solid var(--primary);
+            position: relative;
         }
 
         .voice-message h3 {
+            display: none;
             color: var(--dark);
             margin-top: 0;
             margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .voice-message.show-sender h3 {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .message-date {
+            display: none;
             color: var(--accent);
             font-size: 0.9rem;
             margin-top: 8px;
             text-align: left;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .voice-message.show-sender .message-date {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .audio-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         audio {
+            flex-grow: 1;
             border-radius: 10px;
             background-color: var(--light);
         }
@@ -385,9 +414,39 @@
             background-color: var(--secondary);
         }
 
+        .show-sender-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'El Messiri', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .show-sender-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         @media (max-width: 600px) {
             .voice-message {
                 padding: 12px;
+            }
+
+            .audio-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .show-sender-btn {
+                align-self: flex-end;
+                padding: 6px 12px;
+                font-size: 13px;
             }
         }
     </style>
@@ -405,6 +464,7 @@
 
     <nav>
         <a href="#design" class="active">التصميم</a>
+        <a href="#voice-messages">الرسائل الصوتية</a>
         <a href="#padlet">لوحة التهنئات</a>
         <a href="#details">تفاصيل الفرح</a>
         <a href="#gallery">معرض الصور</a>
@@ -423,87 +483,111 @@
 
     <section id="voice-messages">
         <h2>الرسائل الصوتية</h2>
-        <p>استمع إلى رسائل التهنئة الصوتية من الأهل والأصدقاء:</p>
+        <p>استمعِ إلى رسائل التهنئة الصوتية من الأهل :</p>
 
         <div class="voice-messages-container">
             <div class="voice-message">
-                <h3>رسالة من خالة بدرية</h3>
-                <audio controls style="width: 100%;">
-                    <source src="bedr.mp3" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت.
-                </audio>
+                <div class="audio-container">
+                    <audio controls style="width: 100%;">
+                        <source src="bedr.mp3" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت.
+                    </audio>
+                    <button class="show-sender-btn">إظهار المرسل</button>
+                </div>
+                <h3> خالة بدرية</h3>
 
             </div>
             <div class="voice-message">
-                <h3>رسالة من خالة منى</h3>
-                <audio controls style="width: 100%;">
-                    <source src="muna.mp3" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت.
-                </audio>
+                <div class="audio-container">
+                    <audio controls style="width: 100%;">
+                        <source src="muna.mp3" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت.
+                    </audio>
+                    <button class="show-sender-btn">إظهار المرسل</button>
+                </div>
+                <h3> خالة منى</h3>
 
             </div>
             <div class="voice-message">
-                <h3>رسالة من خالة إيمان</h3>
-                <audio controls style="width: 100%;">
-                    <source src="أمي.mp3" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت.
-                </audio>
+                <div class="audio-container">
+                    <audio controls style="width: 100%;">
+                        <source src="أمي.mp3" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت.
+                    </audio>
+                    <button class="show-sender-btn">إظهار المرسل</button>
+                </div>
+                <h3> خالة إيمان</h3>
 
             </div>
             <div class="voice-message">
-                <h3>رسالة من خالة نورة</h3>
-                <audio controls style="width: 100%;">
-                    <source src="norah.mp3" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت.
-                </audio>
+                <div class="audio-container">
+                    <audio controls style="width: 100%;">
+                        <source src="norah.mp3" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت.
+                    </audio>
+                    <button class="show-sender-btn">إظهار المرسل</button>
+                </div>
+                <h3> خالة نورة</h3>
 
             </div>
             <div class="voice-message">
-                <h3>رسالة من خالة انعام</h3>
-                <audio controls style="width: 100%;">
-                    <source src="enaam.mp3" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت.
-                </audio>
+                <div class="audio-container">
+                    <audio controls style="width: 100%;">
+                        <source src="enaam.mp3" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت.
+                    </audio>
+                    <button class="show-sender-btn">إظهار المرسل</button>
+                </div>
+                <h3> خالة انعام</h3>
 
             </div>
             <div class="voice-message">
-                <h3>رسالة من خال عبدالعزيز </h3>
-                <audio controls style="width: 100%;">
-                    <source src="Aziz.mp3" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت.
-                </audio>
+                <div class="audio-container">
+                    <audio controls style="width: 100%;">
+                        <source src="Aziz.mp3" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت.
+                    </audio>
+                    <button class="show-sender-btn">إظهار المرسل</button>
+                </div>
+                <h3> خال عبدالعزيز </h3>
 
             </div>
 
             <div class="voice-message">
-                <h3>رسالة من خال محمد</h3>
-                <audio controls style="width: 100%;">
-                    <source src="mo.mp3" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت.
-                </audio>
+                <div class="audio-container">
+                    <audio controls style="width: 100%;">
+                        <source src="mo.mp3" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت.
+                    </audio>
+                    <button class="show-sender-btn">إظهار المرسل</button>
+                </div>
+                <h3> خال محمد</h3>
 
             </div>
 
-
             <div class="voice-message">
-                <h3>رسالة من خال وليد</h3>
-                <audio controls style="width: 100%;">
-                    <source src="خالي وليد.mp3" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت.
-                </audio>
+                <div class="audio-container">
+                    <audio controls style="width: 100%;">
+                        <source src="خالي وليد.mp3" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت.
+                    </audio>
+                    <button class="show-sender-btn">إظهار المرسل</button>
+                </div>
+                <h3> خال وليد</h3>
 
             </div>
             <div class="voice-message">
-                <h3>رسالة من أم سهيل </h3>
-                <audio controls style="width: 100%;">
-                    <source src="أم سهيل .mp3" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت.
-                </audio>
+                <div class="audio-container">
+                    <audio controls style="width: 100%;">
+                        <source src="أم سهيل .mp3" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت.
+                    </audio>
+                    <button class="show-sender-btn">إظهار المرسل</button>
+                </div>
+                <h3> أم سهيل </h3>
 
             </div>
         </div>
-
-
     </section>
 
     <section id="padlet">
@@ -749,6 +833,40 @@
                     requestAudioPermission();
                 }
             }, 3000);
+        });
+
+        // كود لإدارة عرض أسماء المرسلين
+        document.addEventListener('DOMContentLoaded', function () {
+            // إظهار المرسل عند انتهاء التشغيل التلقائي
+            const audioElements = document.querySelectorAll('.voice-message audio');
+
+            audioElements.forEach(audio => {
+                audio.addEventListener('ended', function () {
+                    const voiceMessage = this.closest('.voice-message');
+                    voiceMessage.classList.add('show-sender');
+
+                    setTimeout(() => {
+                        voiceMessage.classList.remove('show-sender');
+                    }, 5000);
+                });
+            });
+
+            // إظهار المرسل عند النقر على الزر
+            const showSenderBtns = document.querySelectorAll('.show-sender-btn');
+
+            showSenderBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const voiceMessage = this.closest('.voice-message');
+                    voiceMessage.classList.toggle('show-sender');
+
+                    // تغيير نص الزر حسب الحالة
+                    if (voiceMessage.classList.contains('show-sender')) {
+                        this.textContent = 'إخفاء المرسل';
+                    } else {
+                        this.textContent = 'إظهار المرسل';
+                    }
+                });
+            });
         });
     </script>
 </body>
