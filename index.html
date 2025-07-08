@@ -3,17 +3,21 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#D97A90" />
     <title>عروستنا سارة</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         :root {
@@ -32,6 +36,16 @@
             padding: 0;
             color: var(--text);
             line-height: 1.8;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         header {
@@ -96,6 +110,11 @@
             display: inline-block;
             font-weight: 600;
             background: rgba(247, 214, 221, 0.5);
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         nav a:hover,
@@ -236,6 +255,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            min-height: 44px;
+            min-width: 44px;
         }
 
         .audio-btn:hover {
@@ -350,6 +371,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            min-height: 44px;
         }
 
         audio::-webkit-media-controls-panel {
@@ -370,6 +392,9 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(217, 122, 144, 0.3);
             margin-top: 15px;
+            min-height: 44px;
+            width: 100%;
+            text-align: center;
         }
 
         .show-sender-btn:hover {
@@ -425,6 +450,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-right: 10px;
+            padding: 5px;
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .like-btn.liked {
@@ -435,6 +466,7 @@
         .like-count {
             font-size: 0.9rem;
             color: var(--accent);
+            margin-right: 5px;
         }
 
         /* تصفية الرسائل */
@@ -455,47 +487,26 @@
             font-size: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
+            min-height: 44px;
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
+        .filter-btn:hover, .filter-btn.active {
             background: var(--primary);
             color: white;
         }
 
         /* تأثيرات الحركة */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes heartBeat {
-            0% {
-                transform: scale(1);
-            }
-
-            25% {
-                transform: scale(1.3);
-            }
-
-            50% {
-                transform: scale(1);
-            }
-
-            75% {
-                transform: scale(1.3);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
 
         /* زر وضع الليل */
@@ -507,8 +518,8 @@
             background: var(--primary);
             color: white;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -542,32 +553,47 @@
             background: linear-gradient(135deg, rgba(42, 30, 34, 0.9), rgba(58, 42, 46, 0.7));
         }
 
-        @media (max-width: 600px) {
+        /* تحسينات الجوال */
+        @media (max-width: 768px) {
             body {
                 font-size: 16px;
                 line-height: 1.6;
+                padding-bottom: 60px;
             }
 
             header {
-                padding: 20px 10px 15px 10px;
-                margin: 10px auto;
+                padding: 20px 10px;
+                margin: 80px auto 30px;
                 width: 95%;
                 transform: translateY(10px);
+                border-radius: 15px;
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                margin-bottom: 5px;
             }
 
             #countdown {
-                font-size: 1.1rem;
-                padding: 6px 15px;
+                font-size: 1rem;
+                padding: 6px 12px;
+            }
+
+            nav {
+                padding: 8px 0;
+                position: fixed;
+                bottom: 0;
+                top: auto;
+                width: 100%;
+                border-top: 1px solid rgba(191, 92, 119, 0.3);
+                border-bottom: none;
             }
 
             nav a {
-                font-size: 0.9rem;
-                margin: 4px 6px;
-                padding: 6px 12px;
+                font-size: 0.8rem;
+                padding: 6px 10px;
+                margin: 2px 5px;
+                min-height: 36px;
             }
 
             section {
@@ -582,7 +608,7 @@
             }
 
             .design-gallery {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                grid-template-columns: 1fr;
                 gap: 10px;
             }
 
@@ -596,43 +622,89 @@
                 border-radius: 0;
             }
 
-            @media (max-width: 600px) {
-                .center-image img {
-                    width: 100%;
-                }
+            .center-image img {
+                width: 100%;
             }
 
             #audioVisualizer {
-                height: 70px;
+                height: 60px;
             }
 
             .audio-controls {
-                bottom: 15px;
-                right: 15px;
+                bottom: 70px;
+                right: 10px;
+                flex-direction: column;
             }
 
             .audio-btn {
-                padding: 10px 18px;
+                padding: 10px 15px;
                 font-size: 14px;
+                margin-bottom: 5px;
             }
 
             .voice-message {
                 padding: 15px;
+                border-radius: 15px;
+            }
+
+            .voice-message h3 {
+                font-size: 1.1rem;
             }
 
             .audio-container {
                 flex-direction: column;
-                align-items: flex-start;
+                gap: 10px;
+            }
+
+            audio {
+                width: 100%;
             }
 
             .show-sender-btn {
-                align-self: flex-end;
                 padding: 8px 16px;
+                font-size: 14px;
             }
 
             .message-filters {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .filter-btn {
+                padding: 6px 10px;
+                font-size: 12px;
+                margin: 3px;
+            }
+
+            .dark-mode-toggle {
+                top: 10px;
+                left: 10px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            .voice-message h3 {
+                font-size: 1rem;
+            }
+            
+            .message-date {
+                font-size: 0.75rem;
+            }
+            
+            .audio-btn {
+                font-size: 12px;
+                padding: 8px 12px;
             }
         }
 
@@ -643,6 +715,15 @@
         #mar {
             margin-bottom: 100px;
         }
+        
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lazy-load.loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -652,7 +733,7 @@
     </button>
 
     <section style="padding: 0; margin: 0 auto; width: 100%; max-width: 100%; border: none; box-shadow: none;">
-        <img src="Pink Watercolor Illustration Bridal Shower Invitation.png" alt="Bride to Be" class="intro-image" />
+        <img data-src="Pink Watercolor Illustration Bridal Shower Invitation.png" alt="Bride to Be" class="intro-image lazy-load" />
     </section>
     <div id="mar"></div>
     <header>
@@ -670,10 +751,10 @@
     <section id="design">
         <h2 style="text-align: center;">عروسنا</h2>
         <div class="center-image">
-            <img src="bridesa.webp" alt="دعوة خاصة" />
+            <img data-src="bridesa.webp" alt="دعوة خاصة" class="lazy-load" />
         </div>
         <div class="center-image">
-            <img src="poe.png" />
+            <img data-src="poe.png" class="lazy-load" />
         </div>
     </section>
 
@@ -702,13 +783,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message sister sister-message">
                 <h3>أختك رفيدة</h3>
                 <div class="message-date">١٤٤٥/١١/١٩</div>
@@ -718,13 +798,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <!-- رسائل الإخوة -->
             <div class="voice-message brother brother-message">
                 <h3>أخوك محمد</h3>
@@ -735,13 +814,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message brother brother-message">
                 <h3>أخوك خالد</h3>
                 <div class="message-date">١٤٤٥/١١/١٧</div>
@@ -751,13 +829,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message brother brother-message">
                 <h3>أخوك عبدالرحمن</h3>
                 <div class="message-date">١٤٤٥/١١/١٦</div>
@@ -767,13 +844,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <!-- رسائل الخالات -->
             <div class="voice-message aunt aunt-message">
                 <h3>خالة بدرية</h3>
@@ -784,13 +860,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message aunt aunt-message">
                 <h3>خالة منى</h3>
                 <div class="message-date">١٤٤٥/١١/١٤</div>
@@ -800,13 +875,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message aunt aunt-message">
                 <h3>خالة إيمان</h3>
                 <div class="message-date">١٤٤٥/١١/١٣</div>
@@ -816,13 +890,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message aunt aunt-message">
                 <h3>خالة نورة</h3>
                 <div class="message-date">١٤٤٥/١١/١٢</div>
@@ -832,13 +905,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message aunt aunt-message">
                 <h3>خالة انعام</h3>
                 <div class="message-date">١٤٤٥/١١/١١</div>
@@ -848,13 +920,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <!-- رسائل الأخوال -->
             <div class="voice-message uncle uncle-message">
                 <h3>خال سهيل</h3>
@@ -865,13 +936,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message uncle uncle-message">
                 <h3>خال عبدالعزيز</h3>
                 <div class="message-date">١٤٤٥/١١/٠٩</div>
@@ -881,13 +951,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message uncle uncle-message">
                 <h3>خال محمد</h3>
                 <div class="message-date">١٤٤٥/١١/٠٨</div>
@@ -897,13 +966,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message uncle uncle-message">
                 <h3>خال وليد</h3>
                 <div class="message-date">١٤٤٥/١١/٠٧</div>
@@ -913,13 +981,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message uncle uncle-message">
                 <h3>خال ريان</h3>
                 <div class="message-date">١٤٤٥/١١/٠٦</div>
@@ -929,13 +996,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message aunt aunt-message">
                 <h3>أم سهيل</h3>
                 <div class="message-date">١٤٤٥/١١/٠٥</div>
@@ -945,13 +1011,12 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
-
+            
             <div class="voice-message sister sister-message">
                 <h3>زبيدة</h3>
                 <div class="message-date">١٤٤٥/١١/٠٤</div>
@@ -961,9 +1026,8 @@
                         المتصفح لا يدعم تشغيل الصوت.
                     </audio>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span
-                            class="like-count">0</span></button>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <button class="like-btn" title="إعجاب"><i class="far fa-heart"></i> <span class="like-count">0</span></button>
                     <button class="show-sender-btn">إظهار التفاصيل</button>
                 </div>
             </div>
@@ -1001,21 +1065,21 @@
         <h2>معرض الصور</h2>
         <p>لحظات جميلة من التحضيرات واللحظات الخاصة مع العروس:</p>
         <div class="design-gallery">
-            <img src="inv.png" alt="دعوة خاصة" />
-            <img src="invet.png" alt="دعوة خاصة" />
+            <img data-src="inv.png" alt="دعوة خاصة" class="lazy-load" />
+            <img data-src="invet.png" alt="دعوة خاصة" class="lazy-load" />
         </div>
         <div class="design-gallery">
-            <img src="cel.jpg" alt="دعوة خاصة" />
-            <img src="cele.jpg" alt="دعوة خاصة" />
+            <img data-src="cel.jpg" alt="دعوة خاصة" class="lazy-load" />
+            <img data-src="cele.jpg" alt="دعوة خاصة" class="lazy-load" />
         </div>
         <div class="design-gallery">
-            <img src="cake.jpg" alt="دعوة خاصة" />
-            <img src="sweet.jpg" alt="دعوة خاصة" />
+            <img data-src="cake.jpg" alt="دعوة خاصة" class="lazy-load" />
+            <img data-src="sweet.jpg" alt="دعوة خاصة" class="lazy-load" />
         </div>
     </section>
-
-    <img src="poem.png" alt="Bride to Be" class="intro-image" />
-
+    
+    <img data-src="poem.png" alt="Bride to Be" class="intro-image lazy-load" />
+    
     <footer>
         <p>جميع الحقوق محفوظة &copy; 2023 - عروستنا سارة</p>
     </footer>
@@ -1165,10 +1229,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             // تصنيف الرسائل حسب نوع المرسل
             const messages = document.querySelectorAll('.voice-message');
-
+            
             messages.forEach(msg => {
                 const senderName = msg.querySelector('h3').textContent.trim();
-
+                
                 if (senderName.includes('أختك') || senderName.includes('زبيدة')) {
                     msg.classList.add('sister', 'sister-message');
                 } else if (senderName.includes('أخوك')) {
@@ -1178,29 +1242,29 @@
                 } else if (senderName.includes('خال')) {
                     msg.classList.add('uncle', 'uncle-message');
                 }
-
+                
                 // إضافة تاريخ افتراضي لكل رسالة
                 const randomDays = Math.floor(Math.random() * 7) + 1;
                 const date = new Date();
                 date.setDate(date.getDate() - randomDays);
-
+                
                 const dateElement = msg.querySelector('.message-date');
                 dateElement.textContent = date.toLocaleDateString('ar-SA');
             });
 
             // تصفية الرسائل
             const filterButtons = document.querySelectorAll('.filter-btn');
-
+            
             filterButtons.forEach(btn => {
-                btn.addEventListener('click', function () {
+                btn.addEventListener('click', function() {
                     // إزالة التنشيط من جميع الأزرار
                     filterButtons.forEach(b => b.classList.remove('active'));
                     // تنشيط الزر الحالي
                     this.classList.add('active');
-
+                    
                     const filter = this.dataset.filter;
                     const messages = document.querySelectorAll('.voice-message');
-
+                    
                     messages.forEach(msg => {
                         if (filter === 'all') {
                             msg.style.display = 'block';
@@ -1217,12 +1281,12 @@
 
             // تفاعل زر إظهار/إخفاء المرسل
             const showSenderBtns = document.querySelectorAll('.show-sender-btn');
-
+            
             showSenderBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
+                btn.addEventListener('click', function() {
                     const voiceMessage = this.closest('.voice-message');
                     const isShowing = voiceMessage.classList.contains('show-sender');
-
+                    
                     if (isShowing) {
                         voiceMessage.classList.remove('show-sender');
                         this.textContent = 'إظهار التفاصيل';
@@ -1233,11 +1297,11 @@
                             msg.classList.remove('show-sender');
                             msg.querySelector('.show-sender-btn').textContent = 'إظهار التفاصيل';
                         });
-
+                        
                         voiceMessage.classList.add('show-sender');
                         this.textContent = 'إخفاء التفاصيل';
                         this.style.background = 'linear-gradient(135deg, var(--accent), var(--primary))';
-
+                        
                         // تشغيل الصوت تلقائيًا عند إظهار المرسل
                         const audio = voiceMessage.querySelector('audio');
                         audio.play().catch(e => console.log('Auto-play was prevented:', e));
@@ -1247,19 +1311,19 @@
 
             // تأثيرات عند تشغيل الصوت
             const audioElements = document.querySelectorAll('.voice-message audio');
-
+            
             audioElements.forEach(audio => {
-                audio.addEventListener('play', function () {
+                audio.addEventListener('play', function() {
                     const voiceMessage = this.closest('.voice-message');
                     voiceMessage.style.boxShadow = '0 15px 35px rgba(217, 122, 144, 0.3)';
                     voiceMessage.style.transform = 'translateY(-5px)';
-
+                    
                     // إظهار المرسل عند التشغيل
                     voiceMessage.classList.add('show-sender');
                     voiceMessage.querySelector('.show-sender-btn').textContent = 'إخفاء التفاصيل';
                 });
-
-                audio.addEventListener('ended', function () {
+                
+                audio.addEventListener('ended', function() {
                     const voiceMessage = this.closest('.voice-message');
                     voiceMessage.style.boxShadow = '0 8px 25px rgba(217, 122, 144, 0.15)';
                     voiceMessage.style.transform = 'translateY(0)';
@@ -1268,13 +1332,13 @@
 
             // زر الإعجاب
             const likeButtons = document.querySelectorAll('.like-btn');
-
+            
             likeButtons.forEach(btn => {
-                btn.addEventListener('click', function () {
+                btn.addEventListener('click', function() {
                     const icon = this.querySelector('i');
                     const countElement = this.querySelector('.like-count');
                     let count = parseInt(countElement.textContent);
-
+                    
                     if (this.classList.contains('liked')) {
                         this.classList.remove('liked');
                         icon.classList.remove('fas');
@@ -1288,25 +1352,73 @@
                         this.classList.add('heartBeat');
                         setTimeout(() => this.classList.remove('heartBeat'), 500);
                     }
-
+                    
                     countElement.textContent = count;
                 });
             });
 
             // وضع الليل
             const darkModeToggle = document.querySelector('.dark-mode-toggle');
-
-            darkModeToggle.addEventListener('click', function () {
+            
+            darkModeToggle.addEventListener('click', function() {
                 document.body.classList.toggle('dark-mode');
-
+                
                 if (document.body.classList.contains('dark-mode')) {
                     this.innerHTML = '<i class="fas fa-sun"></i>';
                 } else {
                     this.innerHTML = '<i class="fas fa-moon"></i>';
                 }
             });
+
+            // تحميل الصور عند ظهورها
+            const lazyLoadImages = document.querySelectorAll('.lazy-load');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.getAttribute('data-src');
+                        
+                        if (src) {
+                            img.src = src;
+                            img.classList.add('loaded');
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            }, {
+                rootMargin: '200px 0px'
+            });
+            
+            lazyLoadImages.forEach(img => imageObserver.observe(img));
+
+            // تحسين تجربة اللمس
+            document.querySelectorAll('button, a').forEach(el => {
+                el.style.touchAction = 'manipulation';
+            });
+
+            // منع التكبير عند النقر المزدوج
+            document.addEventListener('dblclick', function(e) {
+                e.preventDefault();
+            }, { passive: false });
+
+            // تحسين لوحة المفاتيح الافتراضية
+            document.querySelectorAll('audio').forEach(audio => {
+                audio.addEventListener('focus', function() {
+                    this.setAttribute('controls', 'true');
+                });
+                
+                audio.addEventListener('blur', function() {
+                    if (!this.paused) return;
+                    this.removeAttribute('controls');
+                });
+            });
+        });
+
+        // إعادة رسم الموجات عند تغيير حجم الشاشة
+        window.addEventListener('resize', function() {
+            initCanvas();
         });
     </script>
 </body>
-
 </html>
