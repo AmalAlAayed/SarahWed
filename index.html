@@ -899,11 +899,11 @@
         </div>
         <div id="mar"></div>
         <div class="message-filters">
-            <button class="filter-btn active" data-filter="all">الكل</button>
-            <button class="filter-btn" data-filter="sister">الأخوات</button>
-            <button class="filter-btn" data-filter="brother">الإخوة</button>
-            <button class="filter-btn" data-filter="aunt">الخالات</button>
-            <button class="filter-btn" data-filter="uncle">الأخوال</button>
+            <button class="filter-btn active" data-filter="all" onclick="filterAndScroll('aunt')">الكل</button>
+            <button class="filter-btn" data-filter="sister" onclick="filterAndScroll('aunt')">الأخوات</button>
+            <button class="filter-btn" data-filter="brother" onclick="filterAndScroll('aunt')">الإخوة</button>
+            <button class="filter-btn" data-filter="aunt" onclick="filterAndScroll('aunt')">الخالات</button>
+            <button class="filter-btn" data-filter="uncle" onclick="filterAndScroll('aunt')">الأخوال</button>
         </div>
     </section>
 
@@ -1012,7 +1012,29 @@
             canvas.width = window.innerWidth;
             canvas.height = 100;
         }
+        function filterAndScroll(filterType) {
+            // 1. تنشيط زر التصفية المطلوب
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === filterType) {
+                    btn.classList.add('active');
+                }
+            });
 
+            // 2. تصفية الرسائل
+            document.querySelectorAll('.voice-message').forEach(msg => {
+                msg.style.display = msg.classList.contains(filterType) ? 'block' : 'none';
+            });
+
+            // 3. الانتقال إلى قسم رسائل العائلة
+            const section = document.getElementById('voice-messages');
+            section.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+
+        }
         async function setupAudio() {
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
