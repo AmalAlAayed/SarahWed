@@ -446,6 +446,13 @@
             color: white;
         }
 
+        #parents-messages .voice-message {
+            display: block !important;
+            /* يضمن بقاء الرسائل ظاهرة */
+            pointer-events: none;
+            /* يمنع التفاعل معها أثناء التصفية */
+        }
+
         /* تأثيرات الحركة */
         @keyframes fadeIn {
             from {
@@ -641,10 +648,11 @@
             class="intro-image lazy-load" />
     </section>
     <div id="mar"></div>
-    
+
     <header>
         <h1>عروستنا سارة</h1>
         <div id="countdown">العد التنازلي: تحميل...</div>
+        <div id="mar"></div>
     </header>
     <div id="mar2"></div>
 
@@ -709,186 +717,7 @@
         <div class="voice-messages-container">
             <!-- رسائل الأخوات -->
             <div class="voice-message sister sister-message">
-                <h3>أختك لطيفة</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="latlat.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message sister sister-message">
-                <h3>أختك رفيدة</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="rofa.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <!-- رسائل الإخوة -->
-            <div class="voice-message brother brother-message">
-                <h3>أخوك محمد</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="moha.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message brother brother-message">
-                <h3>أخوك خالد</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="brokh.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message brother brother-message">
-                <h3>أخوك عبدالرحمن</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="broda.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <!-- رسائل الخالات -->
-            <div class="voice-message aunt aunt-message">
-                <h3>خالة بدرية</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="bedr.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message aunt aunt-message">
-                <h3>خالة منى</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="muna.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message aunt aunt-message">
-                <h3>خالة إيمان</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="أمي.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message aunt aunt-message">
-                <h3>خالة نورة</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="norah.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message aunt aunt-message">
-                <h3>خالة انعام</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="enaam.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <!-- رسائل الأخوال -->
-            <div class="voice-message uncle uncle-message">
-                <h3>خال سهيل</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="suhail.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message uncle uncle-message">
-                <h3>خال عبدالعزيز</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="Aziz.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message uncle uncle-message">
-                <h3>خال محمد</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="mo.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message uncle uncle-message">
-                <h3>خال وليد</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="خالي وليد.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message uncle uncle-message">
-                <h3>خال ريان</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="ryan.mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message aunt aunt-message">
-                <h3>أم سهيل</h3>
-                <div class="audio-container">
-                    <audio controls>
-                        <source src="أم سهيل .mp3" type="audio/mpeg">
-                        المتصفح لا يدعم تشغيل الصوت.
-                    </audio>
-                </div>
-                <button class="show-sender-btn">إظهار المرسل</button>
-            </div>
-
-            <div class="voice-message sister sister-message">
-                <h3>زبيدة</h3>
+                <h3>أختك زبيدة </h3>
                 <div class="audio-container">
                     <audio controls>
                         <source src="zozo1.mp3" type="audio/mpeg">
@@ -898,13 +727,193 @@
                 <button class="show-sender-btn">إظهار المرسل</button>
             </div>
         </div>
+        <div class="voice-message sister sister-message">
+            <h3>أختك لطيفة</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="latlat.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message sister sister-message">
+            <h3>أختك رفيدة</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="rofa.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <!-- رسائل الإخوة -->
+        <div class="voice-message brother brother-message">
+            <h3>أخوك محمد</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="moha.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message brother brother-message">
+            <h3>أخوك خالد</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="brokh.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message brother brother-message">
+            <h3>أخوك عبدالرحمن</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="broda.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <!-- رسائل الخالات -->
+        <div class="voice-message aunt aunt-message">
+            <h3>خالة بدرية</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="bedr.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message aunt aunt-message">
+            <h3>خالة منى</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="muna.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message aunt aunt-message">
+            <h3>خالة إيمان</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="أمي.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message aunt aunt-message">
+            <h3>خالة نورة</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="norah.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message aunt aunt-message">
+            <h3>خالة انعام</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="enaam.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <!-- رسائل الأخوال -->
+        <div class="voice-message uncle uncle-message">
+            <h3>خال سهيل</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="suhail.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message uncle uncle-message">
+            <h3>خال عبدالعزيز</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="Aziz.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message uncle uncle-message">
+            <h3>خال محمد</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="mo.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message uncle uncle-message">
+            <h3>خال وليد</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="خالي وليد.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message uncle uncle-message">
+            <h3>خال ريان</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="ryan.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+        <div class="voice-message aunt aunt-message">
+            <h3>أم سهيل</h3>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="أم سهيل .mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <button class="show-sender-btn">إظهار المرسل</button>
+        </div>
+
+
         <div id="mar"></div>
         <div class="message-filters">
-            <button class="filter-btn active" data-filter="all" onclick="filterAndScroll('aunt')">الكل</button>
-            <button class="filter-btn" data-filter="sister" onclick="filterAndScroll('aunt')">الأخوات</button>
-            <button class="filter-btn" data-filter="brother" onclick="filterAndScroll('aunt')">الإخوة</button>
-            <button class="filter-btn" data-filter="aunt" onclick="filterAndScroll('aunt')">الخالات</button>
-            <button class="filter-btn" data-filter="uncle" onclick="filterAndScroll('aunt')">الأخوال</button>
+            <button class="filter-btn active" data-filter="all" onclick="filterAuntMessages('aunt')">الكل</button>
+            <button class="filter-btn" data-filter="sister" onclick="filterAuntMessages('aunt')">الأخوات</button>
+            <button class="filter-btn" data-filter="brother" onclick="filterAuntMessages('aunt')">الإخوة</button>
+            <button class="filter-btn" data-filter="aunt" onclick="filterAuntMessages()">الخالات</button>
+            <button class="filter-btn" data-filter="uncle" onclick="filterAuntMessages('aunt')">الأخوال</button>
         </div>
     </section>
 
@@ -1013,28 +1022,32 @@
             canvas.width = window.innerWidth;
             canvas.height = 100;
         }
-        function filterAndScroll(filterType) {
-            // 1. تنشيط زر التصفية المطلوب
+        function filterAuntMessages() {
+            // 1. إعادة تعيين كل الفلاتر
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
-                if (btn.dataset.filter === filterType) {
-                    btn.classList.add('active');
-                }
+            });
+            document.querySelector('[data-filter="aunt"]').classList.add('active');
+
+            // 2. عزل التصفية على قسم رسائل العائلة فقط
+            const voiceMessagesSection = document.getElementById('voice-messages');
+            const parentsSection = document.getElementById('parents-messages');
+
+            // 3. تصفية رسائل العائلة
+            voiceMessagesSection.querySelectorAll('.voice-message').forEach(msg => {
+                msg.style.display = msg.classList.contains('aunt') ? 'block' : 'none';
             });
 
-            // 2. تصفية الرسائل
-            document.querySelectorAll('.voice-message').forEach(msg => {
-                msg.style.display = msg.classList.contains(filterType) ? 'block' : 'none';
+            // 4. التأكد من بقاء رسائل الوالدين ظاهرة
+            parentsSection.querySelectorAll('.voice-message').forEach(msg => {
+                msg.style.display = 'block';
             });
 
-            // 3. الانتقال إلى قسم رسائل العائلة
-            const section = document.getElementById('voice-messages');
-            section.scrollIntoView({
+            // 5. التمرير إلى القسم
+            voiceMessagesSection.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
-
-
         }
         async function setupAudio() {
             try {
